@@ -265,10 +265,10 @@ const AVATAR = `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="
 /* ---------------- the table ---------------- */
 function sizes() {
   const w = innerWidth, h = innerHeight;
-  const cw = Math.round(Math.max(56, Math.min(112, w * 0.225, h * 0.125)));
+  const cw = Math.round(Math.max(60, Math.min(118, w * 0.255, h * 0.135)));   // big cards on phones
   const root = document.documentElement.style;
-  root.setProperty('--cw', cw + 'px'); root.setProperty('--cws', Math.round(cw * 0.7) + 'px');
-  root.setProperty('--deckw', Math.round(Math.max(64, cw * 0.95)) + 'px');
+  root.setProperty('--cw', cw + 'px'); root.setProperty('--cws', Math.round(cw * 0.76) + 'px');
+  root.setProperty('--deckw', Math.round(Math.max(70, cw * 0.98)) + 'px');
   return cw;
 }
 function seatHTML(i) {
@@ -307,7 +307,8 @@ function renderTrick() {
   if (!g.trick) { el.innerHTML = ''; return; }
   const up = g.trick.plays.map((pl, i) => ({ pl, i })).filter(x => !x.pl.down);
   const downs = g.trick.plays.map((pl, i) => ({ pl, i })).filter(x => x.pl.down);
-  const L = up.length, oy = L > 1 ? Math.min(26, 140 / (L - 1)) : 0;
+  const ch = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cws')) || 50) * 1.4;
+  const L = up.length, oy = L > 1 ? Math.min(ch * 0.42, 230 / (L - 1)) : 0;   // each beat sits lower so the cards under it stay readable
   const lap = g.trick.lap > 1 ? `<div class="lapchip">${t('lap', { n: g.trick.lap })}</div>` : '';
   const stack = `<div class="stack" style="--oy:${oy.toFixed(1)}px">` + up.map(({ pl, i }, j) =>
     `<div class="layer ${i === g.trick.win ? 'win' : ''} ${pl.cards.length > 3 ? 'many' : ''}" data-i="${i}" style="--i:${j}"><span class="who">${esc(nm(pl.p))}</span>${pl.cards.map(c => cardHTML(c, 'sm')).join('')}</div>`).join('') + '</div>';
