@@ -1,0 +1,14 @@
+{
+  // Cloudflare Workers config. "name" must match the Worker name in your Cloudflare dashboard.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cardgame",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-10-01",
+  "assets": { "directory": "./public", "binding": "ASSETS" },
+  "durable_objects": {
+    "bindings": [{ "name": "TABLES", "class_name": "Table" }]
+  },
+  // SQLite-backed Durable Objects are the kind available on the free plan.
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Table"] }],
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kozel</title>
+<meta name="description" content="Play Kozel, the card game, online with friends.">
+<meta name="theme-color" content="#0f3264">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kozel">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@600;800&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- Home: create a table or join one -->
+<div class="screen" id="home" hidden>
+  <div class="panel">
+    <div class="hero">
+      <div class="fan3" id="heroFan"></div>
+      <h1>Коз<b>ё</b>л</h1>
+      <p id="tagline"></p>
+    </div>
+    <div class="box">
+      <div class="field"><label for="nameIn" id="nameLbl"></label><input class="input" id="nameIn" maxlength="16" autocomplete="nickname"></div>
+    </div>
+    <div class="box">
+      <h2 id="seatsQ"></h2>
+      <div class="opts" id="seatOpts"></div>
+      <button class="btn wide" id="bCreate" type="button"></button>
+      <div class="or" id="orTxt"></div>
+      <div class="joinrow"><input class="input code" id="codeIn" maxlength="5" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Table code"><button class="btn alt" id="bJoin" type="button"></button></div>
+      <p class="err" id="homeErr" role="alert"></p>
+    </div>
+    <div class="foot-links"><button class="pill" id="hRules" type="button"></button><button class="pill" id="hLang" type="button"></button></div>
+  </div>
+</div>
+
+<!-- Lobby: share the code, wait for friends, start -->
+<div class="screen" id="lobby" hidden>
+  <div class="panel">
+    <div class="box">
+      <h2 id="lCodeLbl"></h2>
+      <p class="codebig" id="lCode"></p>
+      <button class="btn wide" id="bShare" type="button"></button>
+      <p class="note" id="lLink"></p>
+    </div>
+    <div class="box">
+      <h2 id="lSeatsLbl"></h2>
+      <ul class="seatlist" id="lSeats"></ul>
+      <button class="btn wide" id="bStart" type="button"></button>
+      <p class="note" id="lNote"></p>
+    </div>
+    <div class="foot-links"><button class="pill" id="bLeave" type="button"></button><button class="pill" id="lLang" type="button"></button></div>
+  </div>
+</div>
+
+<!-- The table -->
+<div class="game" id="game" hidden>
+  <header class="bar">
+    <span class="logo">Коз<b>ё</b>л <span class="countdown" id="gCode"></span></span>
+    <nav class="tools">
+      <button class="pill" id="bRules" type="button"></button>
+      <button class="pill" id="bLang" type="button"></button>
+    </nav>
+  </header>
+  <main class="felt">
+    <section class="opps" id="opps"></section>
+    <section class="center">
+      <div class="deckzone" id="deck"></div>
+      <div class="trick" id="trick"></div>
+      <div></div>
+    </section>
+    <p class="status" id="status" aria-live="polite"></p>
+  </main>
+  <section class="mine">
+    <div id="meSeat"></div>
+    <div class="hand" id="hand"></div>
+    <div class="actions" id="actions"></div>
+    <div class="emopanel" id="emo" hidden></div>
+  </section>
+</div>
+
+<div id="fx" aria-hidden="true"></div>
+<div class="overlay" id="ov" hidden><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
+<div class="conn" id="conn" hidden></div>
+<div class="toast" id="toast" hidden></div>
+<script type="module" src="/app.js"></script>
+</body>
+</html>
