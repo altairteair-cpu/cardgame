@@ -235,6 +235,9 @@ img{max-width:100%}
 
 /* Printed on the cloth, like a casino logo: faint, centered, never in the way */
 .feltmark{position:absolute;left:50%;bottom:clamp(62px,9vh,96px);transform:translateX(-50%) rotate(-4deg);z-index:0;pointer-events:none;user-select:none;-webkit-user-select:none;
-  font-family:var(--f-display);font-weight:800;font-size:clamp(20px,7.2vw,64px);line-height:1;letter-spacing:.04em;max-width:none;text-transform:uppercase;white-space:nowrap;
+  font-family:var(--f-display);font-weight:800;font-size:clamp(18px,5.9vw,56px);display:flex;align-items:center;gap:.3em;line-height:1;letter-spacing:.04em;max-width:none;text-transform:uppercase;white-space:nowrap;
   color:rgba(255,255,255,.24);text-shadow:0 2px 0 rgba(8,28,64,.22)}
 .felt > *:not(.feltmark){position:relative;z-index:1}
+
+.feltmark .goat{width:2em;height:2.25em;flex:none;transform:rotate(6deg);filter:drop-shadow(0 3px 4px rgba(8,28,64,.35));animation:goatbob 3.2s ease-in-out infinite}
+@keyframes goatbob{0%,100%{transform:rotate(6deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-3px)}}
