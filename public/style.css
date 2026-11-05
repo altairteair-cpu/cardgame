@@ -232,3 +232,9 @@ img{max-width:100%}
 .plate.off{opacity:.55}
 .plate .bot{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
 .countdown{color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Printed on the cloth, like a casino logo: faint, centered, never in the way */
+.feltmark{position:absolute;left:50%;bottom:clamp(62px,9vh,96px);transform:translateX(-50%) rotate(-4deg);z-index:0;pointer-events:none;user-select:none;-webkit-user-select:none;
+  font-family:var(--f-display);font-weight:800;font-size:clamp(26px,8.5vw,64px);line-height:1;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;
+  color:rgba(255,255,255,.16);text-shadow:0 1px 0 rgba(8,28,64,.18)}
+.felt > *:not(.feltmark){position:relative;z-index:1}
