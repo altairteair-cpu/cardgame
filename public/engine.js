@@ -5,7 +5,7 @@
 export const SUITS = ['S', 'H', 'C', 'D'];
 export const SYM = { S: '♠', C: '♣', D: '♦', H: '♥' };
 export const PTS = [0, 0, 0, 0, 2, 3, 4, 10, 11];
-export const HAND = 6, LIMIT = 12, TURN_MS = 30000;
+export const HAND = 6, LIMIT = 24, TURN_MS = 30000;
 export const ACTIVE = ['lead', 'follow', 'challenge'];
 export const ALL = [];
 for (const s of SUITS) for (let r = 0; r < 9; r++) ALL.push(s + r);
@@ -162,7 +162,7 @@ export function collect(G) {
   startLead(G);
 }
 // Scoring: most points 0; at/over the line +2; under it +4; no cards +6; cards worth 0 points +8.
-// Tie for most: +2 each, and the next hand is doubled. Line is 31 with 3 players, 41 with 2 players or pairs. A doubled hand doubles everything; six/ace plus a tie makes it x3. 12 = Kozel.
+// Tie for most: +2 each, and the next hand is doubled. Line is 31 with 3 players, 41 with 2 players or pairs. A doubled hand doubles everything; six/ace plus a tie makes it x3. 24 = Kozel.
 export function endHand(G) {
   const groups = groupsOf(G.n), line = G.n === 3 ? 31 : 41, mult = G.mult || (G.double ? 2 : 1);
   const pts = groups.map(g => g.reduce((a, i) => a + sumPts(G.players[i].won), 0));

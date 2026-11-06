@@ -58,7 +58,7 @@ const TXT = {
       'Each turn has a 30 second timer. If it runs out, your lowest card is played for you.',
       'When the hands run out, count your pile. The line is 31 with 3 players and 41 with 2 players. Most points: 0. At the line or above: +2. Under the line: +4. No cards at all: +6. Cards worth 0 points: +8. A tie for most: +2 each, and the next hand is doubled. In a doubled hand every penalty counts twice. If a six or an ace is turned up right after a tie, the doubles stack and every penalty counts three times.',
       'With 4 players you play in pairs: the player sitting opposite is your partner. Partners count their piles together and the line is 41 instead of 31.',
-      'The first to reach 12 penalties is the Kozel.'] },
+      'The first to reach 24 penalties is the Kozel.'] },
  ru: {
   you: 'Вы', rules: 'Правила', langBtn: 'EN', tagline: 'Играйте в Козла онлайн с друзьями',
   yourName: 'Ваше имя', seatsQ: 'Игроков за столом', players: 'Игроков: {n}', teams: '4 · пары', create: 'Создать стол',
@@ -101,7 +101,7 @@ const TXT = {
       'На каждый ход 30 секунд. Если время вышло, за вас играет самая младшая карта.',
       'Когда карты кончились, считаем свою кучку. Черта: 31 очко втроём и 41 вдвоём. Больше всех: 0. Черта и больше: +2. Меньше черты: +4. Ни одной карты: +6. Карты есть, но 0 очков: +8. Ничья за первое место: по +2, и следующая раздача идёт вдвойне. В двойной раздаче все штрафы удваиваются. Если сразу после ничьей открылась шестёрка или туз, удвоения складываются: штрафы ×3.',
       'Вчетвером играют парами: напротив сидит ваш партнёр. Партнёры считают кучки вместе, и черта — 41 вместо 31.',
-      'Кто первым набрал 12 штрафных, тот козёл.'] },
+      'Кто первым набрал 24 штрафных, тот козёл.'] },
 };
 let lang = store.get('kozel-lang') || ((navigator.language || '').startsWith('ru') ? 'ru' : 'en');
 const t = (k, v = {}) => String(TXT[lang][k] ?? TXT.en[k] ?? k).replace(/\{(\w+)\}/g, (_, x) => v[x] ?? '');
