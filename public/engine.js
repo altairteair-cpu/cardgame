@@ -72,16 +72,19 @@ export function newGame(n) {
   return G;
 }
 // Deal 6 each one at a time, turn up the next card to set trump for the first trick,
-// then put that card back into the middle of the deck. A six or an ace doubles the hand.
+// then put that card back into the middle of the deck. A six or an ace doubles the hand,
+// and so does a tie for most points in the hand before (the double does not stack: it is x2 either way).
 export function newHand(G) {
   const n = G.n;
   G.players.forEach(p => { p.hand = []; p.won = []; });
   const stock = shuffle(ALL.slice());
   for (let k = 0; k < HAND; k++) for (let i = 1; i <= n; i++) G.players[(G.dealer + i) % n].hand.push(stock.pop());
   const tc = stock.pop();
+  const byCard = rOf(tc) === 0 || rOf(tc) === 8, byTie = !!G.tieCarry;
+  G.tieCarry = false;
   stock.splice(Math.floor(Math.random() * (stock.length + 1)), 0, tc);
   Object.assign(G, {
-    stock, trump: tc, trumpBy: -1, double: rOf(tc) === 0 || rOf(tc) === 8, firstTrick: true, seen: [],
+    stock, trump: tc, trumpBy: -1, double: byCard || byTie, doubleWhy: byCard && byTie ? 'both' : byTie ? 'tie' : byCard ? 'card' : null, firstTrick: true, seen: [],
     trick: null, lastWin: null, result: null, reveal: { c: tc, by: -1 }, nextTurn: (G.dealer + 1) % n,
     phase: 'reveal', turn: -1
   });
@@ -159,7 +162,7 @@ export function collect(G) {
   startLead(G);
 }
 // Scoring: most points 0; at/over the line +2; under it +4; no cards +6; cards worth 0 points +8.
-// Tie for most: +2 each. Line is 31 with 3 players, 41 with 2 players or pairs. A doubled hand doubles everything. 12 = Kozel.
+// Tie for most: +2 each, and the next hand is doubled. Line is 31 with 3 players, 41 with 2 players or pairs. A doubled hand doubles everything. 12 = Kozel.
 export function endHand(G) {
   const groups = groupsOf(G.n), line = G.n === 3 ? 31 : 41, mult = G.double ? 2 : 1;
   const pts = groups.map(g => g.reduce((a, i) => a + sumPts(G.players[i].won), 0));
@@ -167,7 +170,9 @@ export function endHand(G) {
   const max = Math.max(...pts), top = pts.filter(x => x === max).length;
   const add = groups.map((g, k) => mult * (pts[k] === max ? (top > 1 ? 2 : 0) : cards[k] === 0 ? 6 : pts[k] === 0 ? 8 : pts[k] >= line ? 2 : 4));
   groups.forEach((g, k) => g.forEach(i => { G.players[i].pen += add[k]; }));
-  G.result = { groups, pts, add, line, mult };
+  const tie = top > 1;
+  G.tieCarry = tie;
+  G.result = { groups, pts, add, line, mult, why: G.doubleWhy || null, tie };
   G.phase = G.players.some(p => p.pen >= LIMIT) ? 'over' : 'handEnd';
   G.turn = -1;
 }
