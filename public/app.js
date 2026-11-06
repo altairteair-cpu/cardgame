@@ -54,7 +54,7 @@ const TXT = {
       'When it comes back to the leader and someone has beaten them, the leader can beat that play and send it around again, or let it go. The trick ends when the leader lets it go or nobody beat the leader. The best play takes every card on the table, face-down ones too.',
       'Everyone draws back to 6, one card at a time, winner first. The very last card goes to the player just before the winner, who shows it: that card sets trump for the next trick. The winner leads.',
       'Each turn has a 30 second timer. If it runs out, your lowest card is played for you.',
-      'When the hands run out, count your pile. Most points: 0. 31 or more: +2. Under 31: +4. No cards at all: +6. Cards worth 0 points: +8. A tie for most: +2 each. In a doubled hand every penalty counts twice.',
+      'When the hands run out, count your pile. The line is 31 with 3 players and 41 with 2 players. Most points: 0. At the line or above: +2. Under the line: +4. No cards at all: +6. Cards worth 0 points: +8. A tie for most: +2 each. In a doubled hand every penalty counts twice.',
       'With 4 players you play in pairs: the player sitting opposite is your partner. Partners count their piles together and the line is 41 instead of 31.',
       'The first to reach 12 penalties is the Kozel.'] },
  ru: {
@@ -95,7 +95,7 @@ const TXT = {
       'Когда очередь возвращается к ходившему и его перебили, он может перебить снова (ещё круг) или отдать. Взятка заканчивается, когда ходивший отдаёт или его никто не перебил. Лучший ход забирает все карты со стола, включая сброшенные.',
       'Все добирают до 6 по одной карте, начиная с победителя. Последняя карта приходит игроку перед победителем, он её показывает: это козырь на следующую взятку. Победитель ходит.',
       'На каждый ход 30 секунд. Если время вышло, за вас играет самая младшая карта.',
-      'Когда карты кончились, считаем свою кучку. Больше всех: 0. 31 и больше: +2. Меньше 31: +4. Ни одной карты: +6. Карты есть, но 0 очков: +8. Ничья за первое место: по +2. В двойной раздаче все штрафы удваиваются.',
+      'Когда карты кончились, считаем свою кучку. Черта: 31 очко втроём и 41 вдвоём. Больше всех: 0. Черта и больше: +2. Меньше черты: +4. Ни одной карты: +6. Карты есть, но 0 очков: +8. Ничья за первое место: по +2. В двойной раздаче все штрафы удваиваются.',
       'Вчетвером играют парами: напротив сидит ваш партнёр. Партнёры считают кучки вместе, и черта — 41 вместо 31.',
       'Кто первым набрал 12 штрафных, тот козёл.'] },
 };

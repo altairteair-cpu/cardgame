@@ -159,9 +159,9 @@ export function collect(G) {
   startLead(G);
 }
 // Scoring: most points 0; at/over the line +2; under it +4; no cards +6; cards worth 0 points +8.
-// Tie for most: +2 each. Line is 31, or 41 for pairs. A doubled hand doubles everything. 12 = Kozel.
+// Tie for most: +2 each. Line is 31 with 3 players, 41 with 2 players or pairs. A doubled hand doubles everything. 12 = Kozel.
 export function endHand(G) {
-  const groups = groupsOf(G.n), line = G.n === 4 ? 41 : 31, mult = G.double ? 2 : 1;
+  const groups = groupsOf(G.n), line = G.n === 3 ? 31 : 41, mult = G.double ? 2 : 1;
   const pts = groups.map(g => g.reduce((a, i) => a + sumPts(G.players[i].won), 0));
   const cards = groups.map(g => g.reduce((a, i) => a + G.players[i].won.length, 0));
   const max = Math.max(...pts), top = pts.filter(x => x === max).length;

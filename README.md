@@ -26,4 +26,4 @@ Then open http://localhost:8787 in two browser windows.
 
 ## House rules
 
-36 cards (6 to ace), 6 in hand. Leads share a suit or a rank. Each player beats every card of the best play or throws the same number face down, and once you throw you keep throwing for that trick. The trick goes around in laps until the leader lets it go. The last card drawn after each trick is shown and sets the next trump. Scoring lines are 31, or 41 for pairs. A turned-up six or ace doubles the hand. First to 12 penalties is the Kozel.
+36 cards (6 to ace), 6 in hand. Leads share a suit or a rank. Each player beats every card of the best play or throws the same number face down, and once you throw you keep throwing for that trick. The trick goes around in laps until the leader lets it go. The last card drawn after each trick is shown and sets the next trump. Scoring lines are 31 with 3 players, and 41 with 2 players or pairs. A turned-up six or ace doubles the hand. First to 12 penalties is the Kozel.
