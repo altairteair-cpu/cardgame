@@ -73,7 +73,7 @@ export function newGame(n) {
 }
 // Deal 6 each one at a time, turn up the next card to set trump for the first trick,
 // then put that card back into the middle of the deck. A six or an ace doubles the hand,
-// and so does a tie for most points in the hand before (the double does not stack: it is x2 either way).
+// and so does a tie for most points in the hand before. Both together stack: x3.
 export function newHand(G) {
   const n = G.n;
   G.players.forEach(p => { p.hand = []; p.won = []; });
@@ -84,7 +84,7 @@ export function newHand(G) {
   G.tieCarry = false;
   stock.splice(Math.floor(Math.random() * (stock.length + 1)), 0, tc);
   Object.assign(G, {
-    stock, trump: tc, trumpBy: -1, double: byCard || byTie, doubleWhy: byCard && byTie ? 'both' : byTie ? 'tie' : byCard ? 'card' : null, firstTrick: true, seen: [],
+    stock, trump: tc, trumpBy: -1, double: byCard || byTie, mult: 1 + (byCard ? 1 : 0) + (byTie ? 1 : 0), doubleWhy: byCard && byTie ? 'both' : byTie ? 'tie' : byCard ? 'card' : null, firstTrick: true, seen: [],
     trick: null, lastWin: null, result: null, reveal: { c: tc, by: -1 }, nextTurn: (G.dealer + 1) % n,
     phase: 'reveal', turn: -1
   });
@@ -162,9 +162,9 @@ export function collect(G) {
   startLead(G);
 }
 // Scoring: most points 0; at/over the line +2; under it +4; no cards +6; cards worth 0 points +8.
-// Tie for most: +2 each, and the next hand is doubled. Line is 31 with 3 players, 41 with 2 players or pairs. A doubled hand doubles everything. 12 = Kozel.
+// Tie for most: +2 each, and the next hand is doubled. Line is 31 with 3 players, 41 with 2 players or pairs. A doubled hand doubles everything; six/ace plus a tie makes it x3. 12 = Kozel.
 export function endHand(G) {
-  const groups = groupsOf(G.n), line = G.n === 3 ? 31 : 41, mult = G.double ? 2 : 1;
+  const groups = groupsOf(G.n), line = G.n === 3 ? 31 : 41, mult = G.mult || (G.double ? 2 : 1);
   const pts = groups.map(g => g.reduce((a, i) => a + sumPts(G.players[i].won), 0));
   const cards = groups.map(g => g.reduce((a, i) => a + G.players[i].won.length, 0));
   const max = Math.max(...pts), top = pts.filter(x => x === max).length;

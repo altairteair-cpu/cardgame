@@ -41,7 +41,8 @@ const TXT = {
   trump: 'Trump', down: 'face down', penalty: 'Penalty', partner: 'Partner', deckOut: 'Deck is out',
   doubleTip: 'A six or an ace was turned up: penalties double this hand', doubleTipTie: 'Last hand ended in a tie: penalties double this hand',
   handOver: 'Hand {n} is over', pts: 'Points', add: 'Penalty', total: 'Total', nextIn: 'Next hand in {s}s',
-  line: 'Line this hand: {n} points.', doubled: 'A six or an ace was turned up, so penalties are doubled.', doubledTie: 'The last hand ended in a tie, so penalties are doubled.',
+  line: 'Line this hand: {n} points.', doubled: 'A six or an ace was turned up, so penalties are doubled.', doubledTie: 'The last hand ended in a tie, so penalties are doubled.', tripled: 'A six or an ace was turned up and the last hand was a tie, so penalties are tripled.',
+  tripleTip: 'Six or ace plus last hand’s tie: penalties are tripled this hand',
   tieNext: 'Tie for most points: the next hand is doubled.',
   gameOver: 'Game over', kozel: '{name} is the Kozel.', youKozel: 'You are the Kozel.', winner: 'Fewest penalties: {name}.',
   playAgain: 'Play again', waitAgain: 'Waiting for {name} to start a new game.', close: 'Close',
@@ -55,7 +56,7 @@ const TXT = {
       'When it comes back to the leader and someone has beaten them, the leader can beat that play and send it around again, or let it go. The trick ends when the leader lets it go or nobody beat the leader. The best play takes every card on the table, face-down ones too.',
       'Everyone draws back to 6, one card at a time, winner first. The very last card goes to the player just before the winner, who shows it: that card sets trump for the next trick. The winner leads.',
       'Each turn has a 30 second timer. If it runs out, your lowest card is played for you.',
-      'When the hands run out, count your pile. The line is 31 with 3 players and 41 with 2 players. Most points: 0. At the line or above: +2. Under the line: +4. No cards at all: +6. Cards worth 0 points: +8. A tie for most: +2 each, and the next hand is doubled. In a doubled hand every penalty counts twice (a six or ace and a tie together still make ×2).',
+      'When the hands run out, count your pile. The line is 31 with 3 players and 41 with 2 players. Most points: 0. At the line or above: +2. Under the line: +4. No cards at all: +6. Cards worth 0 points: +8. A tie for most: +2 each, and the next hand is doubled. In a doubled hand every penalty counts twice. If a six or an ace is turned up right after a tie, the doubles stack and every penalty counts three times.',
       'With 4 players you play in pairs: the player sitting opposite is your partner. Partners count their piles together and the line is 41 instead of 31.',
       'The first to reach 12 penalties is the Kozel.'] },
  ru: {
@@ -83,7 +84,8 @@ const TXT = {
   trump: 'Козырь', down: 'сброс', penalty: 'Штраф', partner: 'Партнёр', deckOut: 'Колода кончилась',
   doubleTip: 'Открылась шестёрка или туз: штрафы в этой раздаче удваиваются', doubleTipTie: 'Прошлая раздача — ничья: штрафы в этой раздаче удваиваются',
   handOver: 'Раздача {n} окончена', pts: 'Очки', add: 'Штраф', total: 'Итого', nextIn: 'Следующая раздача через {s} с',
-  line: 'Черта в этой раздаче: {n} очков.', doubled: 'Открылась шестёрка или туз, штрафы удвоены.', doubledTie: 'Прошлая раздача закончилась ничьей, штрафы удвоены.',
+  line: 'Черта в этой раздаче: {n} очков.', doubled: 'Открылась шестёрка или туз, штрафы удвоены.', doubledTie: 'Прошлая раздача закончилась ничьей, штрафы удвоены.', tripled: 'Открылась шестёрка или туз, а прошлая раздача была ничьей, поэтому штрафы утроены.',
+  tripleTip: 'Шестёрка или туз плюс ничья в прошлой раздаче: штрафы утроены',
   tieNext: 'Ничья по очкам: следующая раздача идёт вдвойне.',
   gameOver: 'Игра окончена', kozel: '{name} — козёл.', youKozel: 'Вы — козёл.', winner: 'Меньше всех штрафных: {name}.',
   playAgain: 'Ещё партию', waitAgain: 'Ждём, когда {name} начнёт новую игру.', close: 'Закрыть',
@@ -97,7 +99,7 @@ const TXT = {
       'Когда очередь возвращается к ходившему и его перебили, он может перебить снова (ещё круг) или отдать. Взятка заканчивается, когда ходивший отдаёт или его никто не перебил. Лучший ход забирает все карты со стола, включая сброшенные.',
       'Все добирают до 6 по одной карте, начиная с победителя. Последняя карта приходит игроку перед победителем, он её показывает: это козырь на следующую взятку. Победитель ходит.',
       'На каждый ход 30 секунд. Если время вышло, за вас играет самая младшая карта.',
-      'Когда карты кончились, считаем свою кучку. Черта: 31 очко втроём и 41 вдвоём. Больше всех: 0. Черта и больше: +2. Меньше черты: +4. Ни одной карты: +6. Карты есть, но 0 очков: +8. Ничья за первое место: по +2, и следующая раздача идёт вдвойне. В двойной раздаче все штрафы удваиваются (шестёрка или туз вместе с ничьей — всё равно ×2).',
+      'Когда карты кончились, считаем свою кучку. Черта: 31 очко втроём и 41 вдвоём. Больше всех: 0. Черта и больше: +2. Меньше черты: +4. Ни одной карты: +6. Карты есть, но 0 очков: +8. Ничья за первое место: по +2, и следующая раздача идёт вдвойне. В двойной раздаче все штрафы удваиваются. Если сразу после ничьей открылась шестёрка или туз, удвоения складываются: штрафы ×3.',
       'Вчетвером играют парами: напротив сидит ваш партнёр. Партнёры считают кучки вместе, и черта — 41 вместо 31.',
       'Кто первым набрал 12 штрафных, тот козёл.'] },
 };
@@ -300,7 +302,7 @@ function renderDeck() {
   if (g.trump) {
     const ts = sOf(g.trump);
     const from = g.firstTrick ? t('turnedUp') : g.trumpBy === me() ? t('yourCard') : t('drawnBy', { name: esc(nm(g.trumpBy)) });
-    badge = `<div class="tbadge">${t('trump')} <span class="sym ${isRedSuit(ts) ? 'red' : ''}">${SYM[ts]}</span>${g.double ? `<span class="x2" title="${t(g.doubleWhy === 'tie' ? 'doubleTipTie' : 'doubleTip')}">×2</span>` : ''}</div><div class="from">${from}</div>`;
+    badge = `<div class="tbadge">${t('trump')} <span class="sym ${isRedSuit(ts) ? 'red' : ''}">${SYM[ts]}</span>${g.double ? `<span class="x2" title="${t(g.doubleWhy === 'both' ? 'tripleTip' : g.doubleWhy === 'tie' ? 'doubleTipTie' : 'doubleTip')}">×${g.mult || 2}</span>` : ''}</div><div class="from">${from}</div>`;
   }
   $('deck').innerHTML = pile + badge;
 }
@@ -407,7 +409,7 @@ function renderOverlay() {
   const g = V.g, r = g.result, gpen = r.groups.map(gr => g.players[gr[0]].pen);
   const maxPen = Math.max(...gpen), minPen = Math.min(...gpen), gname = gr => gr.map(i => esc(nm(i))).join(' + ');
   const rows = r.groups.map((gr, k) => `<tr class="${mode === 'over' && gpen[k] === maxPen ? 'out' : ''} ${mode === 'over' && gpen[k] === minPen ? 'top' : ''}"><td>${gname(gr)}</td><td>${r.pts[k]}</td><td>+${r.add[k]}</td><td>${gpen[k]}</td></tr>`).join('');
-  const why = r.mult > 1 ? ' ' + (r.why === 'tie' ? t('doubledTie') : r.why === 'both' ? t('doubled') + ' ' + t('doubledTie') : t('doubled')) : '';
+  const why = r.mult > 1 ? ' ' + (r.why === 'tie' ? t('doubledTie') : r.why === 'both' ? t('tripled') : t('doubled')) : '';
   const lineNote = `<p>${t('line', { n: r.line })}${why}</p>${r.tie && mode !== 'over' ? `<p class="big-line">${t('tieNext')}</p>` : ''}`;
   let head = `<h2>${t('handOver', { n: g.handNo })}</h2>` + lineNote, foot = '';
   if (mode === 'over') {
