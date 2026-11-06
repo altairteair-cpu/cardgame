@@ -192,7 +192,7 @@ export class Table extends DurableObject {
     };
     if (!G) return v;
     v.g = {
-      phase: G.phase, turn: G.turn, deadline: T.deadline, handNo: G.handNo, dealSeq: G.dealSeq, nextTurn: G.nextTurn,
+      phase: G.phase, turn: G.turn, deadline: T.deadline, limit: E.LIMIT, handNo: G.handNo, dealSeq: G.dealSeq, nextTurn: G.nextTurn,
       trump: G.trump, trumpBy: G.trumpBy, double: G.double, mult: G.mult || (G.double ? 2 : 1), doubleWhy: G.doubleWhy || null, firstTrick: G.firstTrick, stock: G.stock.length,
       reveal: G.reveal, lastWin: G.lastWin, result: G.result, nextAt: G.phase === 'handEnd' && T.next ? T.next.at : null,
       players: G.players.map((p, i) => ({ pen: p.pen, count: p.hand.length, hand: i === seat ? p.hand : null })),

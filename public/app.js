@@ -281,7 +281,7 @@ function seatHTML(i) {
   const show = i !== me() && g.phase === 'reveal' && g.reveal && g.reveal.by === i ? `<div class="showcard">${cardHTML(g.reveal.c, 'sm')}<span>${t('newTrump')}</span></div>` : '';
   const tag = V.seats.length === 4 && partnerOf(4, me()) === i ? `<span class="tag">${t('partner')}</span>` : '';
   const off = s && !s.online ? 'off' : '';
-  return `<div class="seat ${on ? 'on' : ''}" id="seat-${i}">${fan}${avatarHTML(i)}<div class="plate ${off}"><span class="nm">${esc(nm(i))}</span>${tag}<span class="pn" title="${t('penalty')}">${p.pen}/${LIMIT}</span></div>${show}</div>`;
+  return `<div class="seat ${on ? 'on' : ''}" id="seat-${i}">${fan}${avatarHTML(i)}<div class="plate ${off}"><span class="nm">${esc(nm(i))}</span>${tag}<span class="pn" title="${t('penalty')}">${p.pen}/${(V && V.g && V.g.limit) || LIMIT}</span></div>${show}</div>`;
 }
 function renderSeats() {
   const n = V.seats.length, order = Array.from({ length: n - 1 }, (_, r) => (me() + r + 1) % n);
